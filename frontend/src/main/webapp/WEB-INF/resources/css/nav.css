@@ -1,0 +1,77 @@
+body{
+	margin:0;
+	font-family: 'Source Sans Pro', sans-serif;
+	background: #fff;  
+}
+h1,h2,h3,h4,h5,h6{
+	margin:0;
+
+	font-family: 'Arapey', serif;
+
+}
+p{
+	margin:0;
+}
+ul,label{
+	margin:0;
+	padding:0;
+}
+body a:hover{
+	text-decoration:none;
+}
+body a:focus {
+    outline: none;
+	text-decoration:none;
+}
+h1 a.navbar-brand {
+    font-size: 1.3em;
+    color: #fff !important;
+}
+nav.navbar.navbar-default.navbar-fixed-top {
+    background:#cc3367;
+    border: none;
+	padding: 1em;
+	-webkit-transition:.5s all;
+	-moz-transition:.5s all; 
+	transition:.5s all;
+}
+.navbar-default .navbar-nav > li > a {
+    color: #fff;
+    font-size: 1.1em;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+    color:#cc3367;
+    background-color:#ffffff;
+}
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    color:  #595959;
+    background-color: transparent;
+}
+nav.navbar.navbar-default.navbar-fixed-top.top-nav-collapse {
+    padding: 0;
+    background: rgba(0, 0, 0, 0.75);
+}
+.nav > li > a {
+    position: relative;
+    display: block;
+    padding: 10px 15px!important;
+}
+/*-- //header --*/ 
+.copy-right {
+    padding: 1em 0;
+  background: #cc3367;
+    text-align: right;
+}
+.copy-right  p {
+    color: #FFF;
+    letter-spacing: 1px;
+}
+.copy-right p a {
+    color: #fff;
+}
+.copy-right p a:hover {
+    color: #fff;
+	text-decoration:none;
+}
