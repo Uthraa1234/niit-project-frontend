@@ -1,4 +1,8 @@
-<%-- <%@ include file="nav.jsp"%> --%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page isELIgnored="false"%>
 <jsp:include page="nav.jsp" />
 <!DOCTYPE html>
 <html lang="en">
@@ -88,15 +92,18 @@
 
 <div class="categoires">
 	 <div class="container">
-		 <a href="#"><div class="col-md-4 sections fashion-grid-a">
+	  <c:url value="/shop" var="shop"></c:url>
+		 <a href="${shop}"><div class="col-md-4 sections fashion-grid-a">
 			 <h4>Pets</h4>
 			 <p>All Kinds</p>			 					
 		 </div></a>
-		 <a href="#"><div class="col-md-4 sections fashion-grid-b">
+		 <c:url value="/shop" var="shop"></c:url>
+		 <a href="${shop}"><div class="col-md-4 sections fashion-grid-b">
 			 <h4>Accessories</h4>
 			 <p>We know what your pet wants</p>			 					
 		 </div></a>
-		 <a href="#"><div class="col-md-4 sections fashion-grid-c">
+		  <c:url value="/services" var="services"></c:url>
+		 <a href="${services }"><div class="col-md-4 sections fashion-grid-c">
 			 <h4>Services</h4>
 			 <p>There's always time for spa!</p>				
 		 </div></a>

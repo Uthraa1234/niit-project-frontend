@@ -1,3 +1,11 @@
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page isELIgnored="false"%>
+<%-- <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %> --%>
+
 <jsp:include page="nav.jsp" />
 <!DOCTYPE html>
 <html >
@@ -35,16 +43,18 @@
     <div class="finger"></div>
   </div>
 </div>
-<form name="login">
+
+<c:url value="/j_spring_security_check" var="action"></c:url>
+<form:form action="${action}" method="post" name="login">
   <div class="hand"></div>
   <div class="hand rgt"></div>
   <h1>PetStore Login</h1>
   <div class="form-group">
-    <input id="name" required="required" class="form-control"/>
-    <label class="form-label">Username    </label>
+    <input id="name" name="j_username" required="required" class="form-control"/>
+    <label class="form-label">Username</label>
   </div>
   <div class="form-group">
-    <input id="password" type="password" required="required" class="form-control"/>
+    <input id="password" name="j_password" type="password" required="required" class="form-control"/>
     <label class="form-label">Password</label>
     <p class="alert">Unfilled Credentials..!!</p>
     <button class="btn2">Login </button>
@@ -54,7 +64,7 @@
     <br>
     <a href="#">forgot password?</a>
   </div>
-</form>
+</form:form>
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
     <script src="resources/js/loginindex.js"></script>

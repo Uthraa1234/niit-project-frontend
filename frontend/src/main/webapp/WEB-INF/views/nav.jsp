@@ -3,7 +3,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page isELIgnored="false"%>
-<%-- <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %> --%>
+ <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,19 +33,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	 <div class="container">
 	     <div class="main-header">
 			  <div class="carting">
-			  
+			  <c:if test="${pageContext.request.userPrincipal.name==null }">
 			  <c:url value="/login" var="login"></c:url>
 				 <ul><li><a href="${login}"> LOGIN</a></li></ul>
+				 </c:if>
+				 <c:if test="${pageContext.request.userPrincipal.name!=null }">
+				 	<ul><li><a href="#">Hi ${pageContext.request.userPrincipal.name}!!</a></li></ul>
+				 </c:if>
 				 </div>
 			 <div class="logo">
-				 <h3><a href="index.html">Pet Store</a></h3>
-			  </div>			  
-			 <div class="box_1">				 
-				 <a href="cart.html"><h3>Cart: <span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)<img src="images/cart.png" alt=""/></h3></a>
-				 <p><a href="javascript:;" class="simpleCart_empty">empty cart</a></p>
+				 <h3><a href="#">Pet Store</a></h3>
+			  </div>
+			   <security:authorize access="hasRole('ROLE_USER')">			  
+			 <div class="box_1">			
+			 <c:url value="/mycart" var="mycart"></c:url>	 
+				 <a href="${mycart}"><h3>Cart(${count})<img src="resources/images/cart.png" alt=""/></h3></a>
+				 <c:url value="/cart/removecart" var="emptycart"></c:url>	 
+			
+				 <p><a href="${emptycart}" class="simpleCart_empty">empty cart</a></p>
 			 
 			 </div>
-			 
+			 </security:authorize>
 			 <div class="clearfix"></div>
 		 </div>
 				
@@ -54,8 +62,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		
 		<c:url value="/home" var="url1"></c:url>
 			<li class="active grid"><a class="color1" href="${url1}">HOME</a></li>
-			<li class="grid"><a href="#">SHOP</a>
-				<div class="megapanel">
+			<c:url value="/shop" var="shop"></c:url>
+			<li class="grid"><a href="${shop}">SHOP</a>
+				<!-- <div class="megapanel">
 					<div class="row">
 						
 						<div class="col1">
@@ -81,9 +90,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 					
     				</div>
-				</li>
-				<li id="service"><a href="#">SERVICES</a><div class="megapanel">
-					<div class="row">
+ -->				</li>
+				<c:url value="/services" var="url2"></c:url>
+				<li id="service"><a href="${url2}">SERVICES</a><div class="megapanel">
+					<!-- <div class="row">
 						<div class="col3">
 							<div class="h_nav">
 							</div>
@@ -103,7 +113,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div>
 						
 					</div>
-					
+ -->					
     				</div>
 				</li>
 				
@@ -111,20 +121,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			 <li class="grid"><a href="${url3}">ABOUT</a></li>
 			 <c:url value="/contact" var="url4"></c:url>		
 			 <li class="grid"><a href="${url4}">CONTACT</a></li>	
+			 <security:authorize access="hasRole('ROLE_ADMIN')">
+			 <c:url value="/viewCategory" var="category"></c:url>		
+			 <li class="grid"><a href="${category}">CATEGORY</a></li>
 			 
-			 <c:url value="/getcategoryform" var="categoryForm"></c:url>		
-			 <li class="grid"><a href="${categoryForm}">CATEGORY</a></li>
-			 
-			 <%-- 
-			 <c:url value="/getsupplierform" var="supplierForm"></c:url>		
-			 <li class="grid"><a href="${supplierForm}">SUPPLIER</a></li> --%>	
-			 
-			 <c:url value="/getproductform" var="productForm"></c:url>		
+			 	 <c:url value="/viewProduct" var="productForm"></c:url>		
 			 <li class="grid"><a href="${productForm}">PRODUCT</a></li>	
-				<li><a href="#">LOGOUT</a>
-				
+			 </security:authorize>
+				<c:if test="${pageContext.request.userPrincipal.name!=null }">
+				<c:url value="/j_spring_security_logout" var="logout"></c:url>
+				<li><a href="${logout}">LOGOUT</a>
 				</li>			
-				
+				</c:if>
 				</ul> 			 
 			  <div class="clearfix"></div>			   	
 	 </div>

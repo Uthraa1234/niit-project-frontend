@@ -45,6 +45,7 @@ ol.breadcrumb li.active{
 .main-header{
 	text-align:center;
 	position:relative;
+	min-height: 70px;
 }
 .navigation-strip{
 	background:#000000;
@@ -1259,8 +1260,9 @@ display:inline-block;
 }
 .btn_form{
 margin-top:2em;
+
 }
-.btn_form a {
+.btn_form  {
 outline: none;
 display: inline-block;
 font-size: 1em;
@@ -1646,7 +1648,7 @@ p.qty {
 	line-height:1.3em;
 }
 .close1,.close2{
-  background: url('../images/close.png') no-repeat 0px 0px;
+  
   cursor: pointer;
   width: 28px;
   height: 28px;

@@ -1,7 +1,7 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="spr"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page isELIgnored="false"%>
 <!DOCTYPE html>
@@ -25,38 +25,40 @@
         <div class="logmod__heading">
           <span class="logmod__heading-subtitle">Enter your personal details</span>
         </div> 
-        <form name="user" method="post">
+        
+        <c:url value="/saveuser" var="action3"></c:url>
+        <spr:form name="user" action="${action3}"  modelAttribute="User" method="post">
         <div class="form-group">
-           <input id="name" required="required" class="form-control"/>
+           <spr:input path="userName" id="name" required="required" class="form-control"/>
     <label class="form-label">Username</label>
     </div>
      <div class="form-group">
-     <input id="email" type="email" required="required" class="form-control"/>
+     <spr:input path="email" id="email" type="email" required="required" class="form-control"/>
     <label class="form-label">Email id</label></div>
      <div class="form-group">
     <input id="password" type="password" required="required" class="form-control"/>
     <label class="form-label">Password</label>
     </div>
      <div class="form-group">
-     <input id="cpassword" type="password" required="required" class="form-control"/>
+     <spr:input path="password" id="cpassword" type="password" required="required" class="form-control"/>
     <label class="form-label">Confirm Password</label></div>
      <div class="form-group">
-     <textarea rows="4" cols="30" id="address"  required="required" class="form-control"></textarea>
+     <spr:textarea path="address" rows="4" cols="30" id="address"  required="required" class="form-control"/>
     <label class="form-label">Address</label></div>
     <div class="form-group">
-     <input id="zipcode" type="number" required="required" class="form-control"/>
+     <spr:input path="zipcode" id="zipcode" type="number" required="required" class="form-control"/>
     <label class="form-label">Zipcode</label></div>
      
      <div class="form-group">
-    <input id="contact" type="number" required="required" class="form-control"/>
+    <spr:input path="contact" id="contact" type="number" required="required" class="form-control"/>
    <label class="form-label">Contact no.</label>
    <br>
    
-   <%-- <c:url value="/login" var="login"></c:url> --%>
+   
     <button class="btn3" id="signupback">Back</button>
     <button type="submit" class="btn3">Done!</button>
     </div>
-          </form>
+          </spr:form>
     </div>
   </div>
 </div>

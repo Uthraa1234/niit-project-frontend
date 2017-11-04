@@ -1,7 +1,9 @@
 package com.niit.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class HomeController {
@@ -17,14 +19,20 @@ public class HomeController {
 	}
 	
 	@RequestMapping("/login")
-	public String login(){
+	public String login(@RequestParam(value = "error", required = false) String error, 
+			@RequestParam(value = "logout", required = false) String logout, Model model)
+	{
+		if(error != null) {
+			model.addAttribute("error", "Username or Password Incorrect");
+			}
+		
+		if(logout != null) {
+			model.addAttribute("logout", "Logged out Successfully");
+		}
 		return "login";
 	}
 	
-	@RequestMapping("/signup")
-	public String signup(){
-		return "signup";
-	}
+	
 
 	@RequestMapping("/about")
 	public String about(){
@@ -40,7 +48,10 @@ public class HomeController {
 	public String newproduct(){
 		return "productForm";
 	}
-	
+	@RequestMapping("/services")
+	public String services(){
+		return "services";
+	}
 	
 	
 }

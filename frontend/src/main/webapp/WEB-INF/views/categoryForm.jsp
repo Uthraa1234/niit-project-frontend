@@ -29,7 +29,7 @@
         </div> 
         
         <c:url value="/savecategory" var="action"></c:url>
-        <spr:form action="${action}" method="post" name="category" modelAttribute="Category" enctype="multipart/form-data">
+        <spr:form action="${action}" method="post" name="category" modelAttribute="Category" >
 
 <spr:hidden path="categoryId" />
         <div class="form-group">
